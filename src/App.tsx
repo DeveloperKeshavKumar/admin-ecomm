@@ -1,11 +1,14 @@
 import { ThemeProvider } from "@/components/theme-provider"
+import Dashboard from "./pages/Dashboard"
+import Login from "./pages/Login";
 
 function App() {
+  const isLoggedIn = localStorage.getItem('token') ? true : false;
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <h1 className="text-2xl font-semibold underline ">
-        Hello world
-      </h1>
+      {
+        isLoggedIn ? <Dashboard /> : <Login />
+      }
     </ThemeProvider>
   )
 }
